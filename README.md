@@ -7,7 +7,7 @@ Ce projet propose une **page HTML interactive** permettant d’apprendre Highcha
 Il permet de :
 
 - Modifier et exécuter du code Highcharts directement dans la page  
-- Explorer les différents types de graphiques (colonnes, lignes, secteurs, cartes, heatmaps, chandeliers…)  
+- Explorer les différents types de graphiques (colonnes, lignes, secteurs, cartes, heatmaps, bougies…)  
 - S’initier à la visualisation de données  
 - Comprendre les modules spécifiques de Highcharts (heatmap, treemap, funnel, stock, maps, …)
 
@@ -19,7 +19,7 @@ Le projet se compose des fichiers suivants :
 |--------|------|
 | **index.html** | Structure du TP et des 40 exercices |
 | **style.css** | Styles et mise en forme du TP |
-| **script.js** | Script exécutant dynamiquement le code des exercices |
+| **script.js** | Script exécutant le code des exercices |
 
 ## Lancer le projet en local
 
