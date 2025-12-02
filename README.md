@@ -1,34 +1,71 @@
-# IHM : Activité - Présenation de HighCharts
+# TP Highcharts Interactif
 
-## Description
-Cette activité a pour but de vous familiariser avec la bibliothèque JavaScript **Highcharts** pour la création de graphiques interactifs dans des pages web. Vous allez apprendre à intégrer Highcharts dans une page HTML (mise sous forme de notebook), configurer différents types de graphiques et personnaliser leur apparence. La page HTML, permet une architecture simple, pouvant être adapter à des projets Vue.js ou React.js ou Angular par la suite.
+## 🎯 Description du projet
 
-## Outils nécessaires
-- Un navigateur (Chrome, Firefox, Edge…)
-- Pas besoin de serveur : tout fonctionne en local
+Ce projet propose une **page HTML interactive** permettant d’apprendre Highcharts, Highstock et Highmaps à travers **40 exercices progressifs**.
 
-## Installation et lancement
-1. Cloner le projet ou récupérer le .ZIP : 
-```
-git clone https://github.com/mon-projet/highcharts-activity.git
-cd highcharts-activity
-```
+Il permet de :
 
-2. Ouvrir le fichier HTML type "notebook" de l’activité :
-- Il suffit d’ouvrir : **src/index.html**. Aucun build, aucune installation, aucune dépendance : Highcharts est chargé via CDN.
+- Modifier et exécuter du code Highcharts directement dans la page  
+- Explorer les différents types de graphiques (colonnes, lignes, secteurs, cartes, heatmaps, chandeliers…)  
+- S’initier à la visualisation de données  
+- Comprendre les modules spécifiques de Highcharts (heatmap, treemap, funnel, stock, maps, …)
 
-3. Compléter l'activité directement dans le fichier HTML ("notebook") :
-- Lire l’énoncé de l’exercice
-- Modifier le code dans le notebook
-- Cliquer sur Exécuter dans le notebook
-- Observer le résultat (graphique mis à jour dans le notebook)
-- ...
+## 📁 Contenu du projet
 
-## Ressources utiles
-- Documentation Highcharts : https://www.highcharts.com/docs
-- Démos officielles : https://www.highcharts.com/demo
+Le projet se compose des fichiers suivants :
+
+| Fichier | Rôle |
+|--------|------|
+| **index.html** | Structure du TP et des 40 exercices |
+| **style.css** | Styles et mise en forme du TP |
+| **script.js** | Script exécutant dynamiquement le code des exercices |
+
+## ⚙️ Lancer le projet en local
+
+Aucune installation supplémentaire n’est nécessaire.  
+Vous devez simplement disposer de **Python 3**.
+
+### ▶️ Étapes pour lancer un serveur local
+
+1. Ouvrir un terminal dans le dossier du projet :
+   ```bash
+   cd chemin/vers/le/projet
+   ```
+2. Démarrer un serveur local :
+   ```bash
+   python -m http.server 8000
+   ```
+3. Ouvrir votre navigateur à l’adresse :
+   ```
+   http://localhost:8000
+   ```
+
+## 📚 Documentation Highcharts utile pour les exercices
+
+### Highcharts – Documentation générale
+- Documentation: https://api.highcharts.com/highcharts/
+- Exemples : https://www.highcharts.com/demo
+
+### Highmaps
+- Documentation : https://api.highcharts.com/highmaps/
+- Exemples : https://www.highcharts.com/demo/maps
+- Cartes : https://code.highcharts.com/mapdata/
+
+### Highstock
+- Documentation : https://api.highcharts.com/highstock/
+- Exemples : https://www.highcharts.com/demo/stock
+
+### Modules avancés
+| Module | Lien |
+|--------|------|
+| Heatmap | https://api.highcharts.com/highcharts/heatmap |
+| Treemap | https://api.highcharts.com/highcharts/treemap |
+| Funnel | https://api.highcharts.com/highcharts/funnel |
+| Arearange | https://api.highcharts.com/highcharts/arearange |
+| Columnrange | https://api.highcharts.com/highcharts/columnrange |
+| Accessibility | https://api.highcharts.com/highcharts/accessibility |
+
 
 ## Auteurs
 ARBAUT Jean-Baptiste et TROPEL Célia
-
-
