@@ -1,6 +1,6 @@
 # TP Highcharts Interactif
 
-## 🎯 Description du projet
+## Description du projet
 
 Ce projet propose une **page HTML interactive** permettant d’apprendre Highcharts, Highstock et Highmaps à travers **40 exercices progressifs**.
 
@@ -11,7 +11,7 @@ Il permet de :
 - S’initier à la visualisation de données  
 - Comprendre les modules spécifiques de Highcharts (heatmap, treemap, funnel, stock, maps, …)
 
-## 📁 Contenu du projet
+## Contenu du projet
 
 Le projet se compose des fichiers suivants :
 
@@ -21,12 +21,12 @@ Le projet se compose des fichiers suivants :
 | **style.css** | Styles et mise en forme du TP |
 | **script.js** | Script exécutant dynamiquement le code des exercices |
 
-## ⚙️ Lancer le projet en local
+## Lancer le projet en local
 
 Aucune installation supplémentaire n’est nécessaire.  
 Vous devez simplement disposer de **Python 3**.
 
-### ▶️ Étapes pour lancer un serveur local
+### Étapes pour lancer un serveur local
 
 1. Ouvrir un terminal dans le dossier du projet :
    ```bash
@@ -41,7 +41,7 @@ Vous devez simplement disposer de **Python 3**.
    http://localhost:8000
    ```
 
-## 📚 Documentation Highcharts utile pour les exercices
+## Documentation Highcharts utile pour les exercices
 
 ### Highcharts – Documentation générale
 - Documentation: https://api.highcharts.com/highcharts/
