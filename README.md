@@ -2,7 +2,7 @@
 
 ## Description du TP
 
-Ce TP propose une **page HTML interactive** (reproduisant l'architecture d'un notebook), permettant d’apprendre Highcharts (Higthcharts Core / More, Highstock, Highmaps et Highcharts Gantt) à travers **40 exercices progressifs**.
+Ce TP propose une **page HTML interactive** (reproduisant l'architecture d'un notebook), permettant d’apprendre Highcharts (Higthcharts Core / More, Highstock et Highmaps) à travers **40 exercices progressifs**.
 
 Il permet de :
 
