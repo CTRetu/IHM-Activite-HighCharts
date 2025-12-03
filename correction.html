@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TP Highcharts</title>
+
+<!-- Fichier CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Financier -->
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<!-- Modules Highcharts compatibles Stock -->
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<!-- Modules supplémentaires -->
+<script src="https://code.highcharts.com/modules/heatmap.js"></script>
+<script src="https://code.highcharts.com/modules/treemap.js"></script>
+<script src="https://code.highcharts.com/modules/funnel.js"></script>
+
+<!-- Highmaps -->
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/map.js"></script>
+<script src="https://code.highcharts.com/maps/modules/data.js"></script>
+
+<!-- Pack cartes -->
+<script src="https://code.highcharts.com/mapdata/custom/world-continents.js"></script>
+<script src="https://code.highcharts.com/mapdata/custom/world-robinson.js"></script>
+
+  
+</head>
+
+<body>
+  <header>
+    <h1>IHM : TP HightCharts </h1>
+  </header>
+
+  <main>
+<!-- EXERCICE 1 -->
+<div class="card">
+  <h2>Exercice 1 : Graphique en colonnes</h2>
+  <div class="hint">Modifie les valeurs pour afficher d’autres ventes mensuelles. Ajoute un mois supplémentaire.</div>
+  <textarea id="editor1">Highcharts.chart('chart1', {
+  chart: { type: 'column' },
+  title: { text: 'Ventes mensuelles' },
+  xAxis: { categories: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'] },
+  yAxis: { title: { text: 'Ventes (k€)' } },
+  series: [{ name: 'Produit A', data: [5, 3, 4, 7, 2, 4] }]
+});</textarea>
+  <button onclick="runCode('editor1','chart1')">▶️ Exécuter</button>
+  <div id="chart1" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 2 -->
+<div class="card">
+  <h2>Exercice 2 : Courbe de température</h2>
+  <div class="hint">Ajoute une deuxième ville pour comparer. Change la couleur d’une série.</div>
+  <textarea id="editor2">Highcharts.chart('chart2', {
+  chart: { type: 'line' },
+  title: { text: 'Évolution de la température' },
+  xAxis: { categories: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven'] },
+  yAxis: { title: { text: 'Température (°C)' } },
+  series: [{ name: 'Paris', data: [12, 14, 15, 13, 12] }]
+});</textarea>
+  <button onclick="runCode('editor2','chart2')">▶️ Exécuter</button>
+  <div id="chart2" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 3 -->
+<div class="card">
+  <h2>Exercice 3 : Diagramme en secteurs</h2>
+  <div class="hint">Ajoute un produit et ajuste les parts pour que le total fasse 100%.</div>
+  <textarea id="editor3">Highcharts.chart('chart3', {
+  chart: { type: 'pie' },
+  title: { text: 'Part de marché' },
+  series: [{
+    name: 'Pourcentage',
+    data: [['Produit A', 45], ['Produit B', 30], ['Produit C', 25]]
+  }]
+});</textarea>
+  <button onclick="runCode('editor3','chart3')">▶️ Exécuter</button>
+  <div id="chart3" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 4 -->
+<div class="card">
+  <h2>Exercice 4 : Comparaison multi-séries</h2>
+  <div class="hint">Ajoute une 3ᵉ série (Produit C). Essaie une ligne pointillée avec <code>dashStyle</code>.</div>
+  <textarea id="editor4">Highcharts.chart('chart4', {
+  chart: { type: 'line' },
+  title: { text: 'Comparaison de ventes' },
+  xAxis: { categories: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai'] },
+  yAxis: { title: { text: 'Ventes (k€)' } },
+  series: [
+    { name: 'Produit A', data: [5, 7, 3, 6, 2] },
+    { name: 'Produit B', data: [3, 2, 4, 8, 5] }
+  ]
+});</textarea>
+  <button onclick="runCode('editor4','chart4')">▶️ Exécuter</button>
+  <div id="chart4" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 5 -->
+<div class="card">
+  <h2>Exercice 5 : Graphique en barres</h2>
+  <div class="hint">Trie du plus grand au plus petit.</div>
+  <textarea id="editor5">Highcharts.chart('chart5', {
+  chart: { type: 'bar' },
+  title: { text: 'Classement des ventes' },
+  xAxis: { categories: ['Produit A', 'Produit B', 'Produit C'] },
+  series: [{ name: '2025', data: [10, 7, 4] }]
+});</textarea>
+  <button onclick="runCode('editor5','chart5')">▶️ Exécuter</button>
+  <div id="chart5" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 6 -->
+<div class="card">
+  <h2>Exercice 6 : Aires empilées</h2>
+  <div class="hint">Ajoute/supprime l’empilement pour comparer <em>valeurs cumulées</em> vs <em>valeurs brutes</em>.</div>
+  <textarea id="editor6">Highcharts.chart('chart6', {
+  chart: { type: 'area' },
+  title: { text: 'Ventes cumulées' },
+  plotOptions: { area: { stacking: 'normal' } },
+  xAxis: { categories: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai'] },
+  series: [
+    { name: 'Produit A', data: [3, 4, 4, 2, 5] },
+    { name: 'Produit B', data: [2, 5, 6, 2, 1] }
+  ]
+});</textarea>
+  <button onclick="runCode('editor6','chart6')">▶️ Exécuter</button>
+  <div id="chart6" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 7 -->
+<div class="card">
+  <h2>Exercice 7 : Nuage de points</h2>
+  <div class="hint">Ajoute 3 nouveaux points (taille, poids).</div>
+  <textarea id="editor7">Highcharts.chart('chart7', {
+  chart: { type: 'scatter' },
+  title: { text: 'Taille vs Poids' },
+  xAxis: { title: { text: 'Taille (cm)' } },
+  yAxis: { title: { text: 'Poids (kg)' } },
+  series: [{ name: 'Échantillon', data: [[160,55],[170,68],[180,75],[150,50],[165,60]] }]
+});</textarea>
+  <button onclick="runCode('editor7','chart7')">▶️ Exécuter</button>
+  <div id="chart7" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 8 -->
+<div class="card">
+  <h2>Exercice 8 : Camembert semi-circulaire (donut)</h2>
+  <div class="hint">Change la proportion “Réalisé/Restant” pour tester différents taux d’avancement.</div>
+  <textarea id="editor8">Highcharts.chart('chart8', {
+  chart: { type: 'pie' },
+  title: { text: 'Avancement du projet' },
+  plotOptions: { pie: { startAngle: -90, endAngle: 90, center: ['50%', '75%'], innerSize: '50%' } },
+  series: [{ name: 'Progression', data: [['Réalisé', 65], ['Restant', 35]], colors:['#127475','#ddd'] }]
+});</textarea>
+  <button onclick="runCode('editor8','chart8')">▶️ Exécuter</button>
+  <div id="chart8" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 9 -->
+<div class="card">
+  <h2>Exercice 9 : Courbe + Colonnes (double axe)</h2>
+  <div class="hint">Ajoute un mois de plus et ajuste les valeurs de pluie/°C.</div>
+  <textarea id="editor9">Highcharts.chart('chart9', {
+  title: { text: 'Température et précipitations' },
+  xAxis: { categories: ['Jan', 'Fév', 'Mar', 'Avr'] },
+  yAxis: [{ title: { text: '°C' } }, { title: { text: 'mm' }, opposite: true }],
+  series: [
+    { name: 'Pluie', type: 'column', yAxis: 1, data: [40, 50, 70, 90] },
+    { name: 'Température', type: 'spline', data: [4, 6, 10, 15] }
+  ]
+});</textarea>
+  <button onclick="runCode('editor9','chart9')">▶️ Exécuter</button>
+  <div id="chart9" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 10 -->
+<div class="card">
+  <h2>Exercice 10 : Carte thermique</h2>
+  <div class="hint">Change des cellules de la matrice pour simuler d’autres “heures chargées”.</div>
+  <textarea id="editor10">Highcharts.chart('chart10', {
+  chart: { type: 'heatmap' },
+  title: { text: 'Activité par jour et heure' },
+  xAxis: { categories: ['Lun','Mar','Mer','Jeu','Ven'] },
+  yAxis: { categories: ['8h','10h','12h','14h','16h'], title:null },
+  colorAxis: { minColor:'#FFFFFF', maxColor:'#0073e6' },
+  series: [{ data:[[0,0,10],[1,0,19],[2,0,8],[3,0,24],[4,0,67],[0,1,92],[1,1,58]] }]
+});</textarea>
+  <button onclick="runCode('editor10','chart10')">▶️ Exécuter</button>
+  <div id="chart10" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 11 -->
+<div class="card">
+  <h2>Exercice 11 : Radar (polaire)</h2>
+  <div class="hint">Ajoute une compétence (catégorie) et son niveau.</div>
+  <textarea id="editor11">Highcharts.chart('chart11', {
+  chart: { polar: true, type: 'line' },
+  title: { text: 'Profil de compétences' },
+  xAxis: { categories: ['HTML','CSS','JS','Python','SQL'], tickmarkPlacement: 'on', lineWidth: 0 },
+  yAxis: { gridLineInterpolation: 'polygon', min: 0, tickInterval: 1 },
+  series: [{
+    name: 'Élève A', data: [4,5,3,4,2], pointPlacement: 'on'
+  }]
+});</textarea>
+  <button onclick="runCode('editor11','chart11')">▶️ Exécuter</button>
+  <div id="chart11" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 12 -->
+<div class="card">
+  <h2>Exercice 12 : Bulles (3ᵉ dimension)</h2>
+  <div class="hint">Ajoute 2 villes (x=latitude, y=longitude, z=population).</div>
+  <textarea id="editor12">Highcharts.chart('chart12', {
+  chart: { type: 'bubble', plotBorderWidth: 1 },
+  title: { text: 'Villes : position et population' },
+  xAxis: { title: { text: 'Latitude' } },
+  yAxis: { title: { text: 'Longitude' } },
+  series: [{
+    name: 'Villes',
+    data: [[48.85, 2.35, 2148], [45.75, 4.85, 515], [43.60, 1.44, 493]]
+  }]
+});</textarea>
+  <button onclick="runCode('editor12','chart12')">▶️ Exécuter</button>
+  <div id="chart12" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 13 -->
+<div class="card">
+  <h2>Exercice 13 : Histogramme (par colonnes)</h2>
+  <div class="hint">Change les classes (catégories) et les effectifs pour simuler une autre distribution.</div>
+  <textarea id="editor13">Highcharts.chart('chart13', {
+  chart: { type: 'column' },
+  title: { text: 'Distribution des notes' },
+  xAxis: { categories: ['0-5','6-10','11-15','16-20'] },
+  yAxis: { title: { text: "Nombre d'élèves" } },
+  series: [{ name: 'Notes', data: [2, 8, 12, 4] }]
+});</textarea>
+  <button onclick="runCode('editor13','chart13')">▶️ Exécuter</button>
+  <div id="chart13" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 14 -->
+<div class="card">
+  <h2>Exercice 14 : Barres empilées</h2>
+  <div class="hint">Ajoute une série “Produit C”.</div>
+  <textarea id="editor14">Highcharts.chart('chart14', {
+  chart: { type: 'bar' },
+  title: { text: 'Répartition régionale' },
+  xAxis: { categories: ['Nord','Sud','Est','Ouest'] },
+  plotOptions: { series: { stacking: 'normal', dataLabels: { enabled: true } } },
+  series: [
+    { name:'Produit A', data:[5,3,4,7] },
+    { name:'Produit B', data:[2,2,3,2] }
+  ]
+});</textarea>
+  <button onclick="runCode('editor14','chart14')">▶️ Exécuter</button>
+  <div id="chart14" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 15 -->
+<div class="card">
+  <h2>Exercice 15 : Courbe en paliers (step)</h2>
+  <div class="hint">Change l’option <code>step</code> entre 'left' | 'center' | 'right'.</div>
+  <textarea id="editor15">Highcharts.chart('chart15', {
+  chart: { type: 'line' },
+  title: { text: 'Signal discret' },
+  plotOptions: { series: { step: 'left' } },
+  series: [{ name: 'Signal', data: [1,1,0,0,1,0,1,1] }]
+});</textarea>
+  <button onclick="runCode('editor15','chart15')">▶️ Exécuter</button>
+  <div id="chart15" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 16 -->
+<div class="card">
+  <h2>Exercice 16 : Série temporelle (dates réelles)</h2>
+  <div class="hint">Ajoute 3 jours de données en plus.</code>.</div>
+  <textarea id="editor16">Highcharts.chart('chart16', {
+  chart: { type: 'line' },
+  title: { text: 'Visites par jour' },
+  xAxis: { type: 'datetime' },
+  series: [{
+    name: 'Visites',
+    data: [
+      [Date.UTC(2025,0,1), 80],
+      [Date.UTC(2025,0,2), 95],
+      [Date.UTC(2025,0,3), 60],
+      [Date.UTC(2025,0,4), 120]
+    ]
+  }]
+});</textarea>
+  <button onclick="runCode('editor16','chart16')">▶️ Exécuter</button>
+  <div id="chart16" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 17 -->
+<div class="card">
+  <h2>Exercice 17 : Treemap (hiérarchie)</h2>
+  <div class="hint">Change les valeurs et ajoute une catégorie.</div>
+  <textarea id="editor17">Highcharts.chart('chart17', {
+  series: [{
+    type: 'treemap',
+    layoutAlgorithm: 'squarified',
+    data: [
+      { name: 'Catégorie A', value: 6 },
+      { name: 'Catégorie B', value: 3 },
+      { name: 'Catégorie C', value: 4 },
+      { name: 'Catégorie D', value: 2 }
+    ]
+  }],
+  title: { text: 'Répartition par catégorie (Treemap)' }
+});</textarea>
+  <button onclick="runCode('editor17','chart17')">▶️ Exécuter</button>
+  <div id="chart17" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 18 -->
+<div class="card">
+  <h2>Exercice 18 : Entonnoir (funnel)</h2>
+  <div class="hint">Modifie les étapes du tunnel (ex : visites → panier → achat) et leurs valeurs.</div>
+  <textarea id="editor18">Highcharts.chart('chart18', {
+  chart: { type: 'funnel' },
+  title: { text: 'Tunnel de conversion' },
+  plotOptions: { series: { dataLabels: { enabled: true, format: '<b>{point.name}</b>: {point.y}' } } },
+  series: [{
+    name: 'Utilisateurs',
+    data: [
+      ['Visites', 5000],
+      ['Ajout au panier', 1200],
+      ['Commande', 800],
+      ['Achat', 650]
+    ]
+  }]
+});</textarea>
+  <button onclick="runCode('editor18','chart18')">▶️ Exécuter</button>
+  <div id="chart18" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 19 -->
+<div class="card">
+  <h2>Exercice 19 : Colonne plage (min–max)</h2>
+  <div class="hint">Change les min/max par mois (ex : températures min/max).</div>
+  <textarea id="editor19">Highcharts.chart('chart19', {
+  chart: { type: 'columnrange', inverted: false },
+  title: { text: 'Températures min/max' },
+  xAxis: { categories: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai'] },
+  yAxis: { title: { text: '°C' } },
+  series: [{
+    name: 'Amplitude',
+    data: [[-2,3],[0,6],[2,10],[5,15],[9,20]]
+  }]
+});</textarea>
+  <button onclick="runCode('editor19','chart19')">▶️ Exécuter</button>
+  <div id="chart19" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 20 -->
+<div class="card">
+  <h2>Exercice 20 : Aire plage temporelle (arearange)</h2>
+  <div class="hint">Ajoute 2 dates supplémentaires.</div>
+  <textarea id="editor20">Highcharts.chart('chart20', {
+  title: { text: 'Températures min–max sur la semaine' },
+  xAxis: { type: 'datetime' },
+  yAxis: { title: { text: '°C' } },
+  series: [{
+    type: 'arearange',
+    name: 'Température',
+    data: [
+      [Date.UTC(2025,0,1), -2, 4],
+      [Date.UTC(2025,0,2), -1, 6],
+      [Date.UTC(2025,0,3),  0, 8],
+      [Date.UTC(2025,0,4),  1, 9],
+      [Date.UTC(2025,0,5),  2, 10]
+    ]
+  }]
+});</textarea>
+  <button onclick="runCode('editor20','chart20')">▶️ Exécuter</button>
+  <div id="chart20" style="height:400px;"></div>
+</div>
+
+
+<!-- EXERCICE 21 -->
+<div class="card">
+  <h2>Exercice 21 : Création libre d’un graphique en colonnes</h2>
+  <div class="hint">
+    Crée un graphique en colonnes complet :  
+    choisis 4 à 6 catégories (ex : A, B, C, D),  
+    attribue une série de valeurs correspondantes,  
+    ajoute un titre clair et un nom de série.  
+    Objectif : savoir construire un graphique en colonnes de A à Z.
+  </div>
+  <textarea id="editor21">Highcharts.chart('chart21', {
+  chart: { type: 'column' },
+  title: { text: 'Ventes de quatre produits' },
+  xAxis: { categories: ['Produit A', 'Produit B', 'Produit C', 'Produit D'] },
+  yAxis: { title: { text: 'Ventes (unités)' } },
+  series: [{
+    name: 'Semaine 1',
+    data: [12, 8, 15, 5]
+  }]
+});</textarea>
+  <button onclick="runCode('editor21','chart21')">▶️ Exécuter</button>
+  <div id="chart21" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 22 -->
+<div class="card">
+  <h2>Exercice 22 : Ligne multi-séries personnalisée</h2>
+  <div class="hint">
+    Crée un graphique en lignes comparant deux séries :  
+    ajoute au moins 5 points par série,  
+    différencie les couleurs,  
+    et affiche une légende lisible.  
+    Objectif : représenter une comparaison temporelle simple.
+  </div>
+  <textarea id="editor22">HHighcharts.chart('chart22', {
+  chart: { type: 'line' },
+  title: { text: 'Température : Ville A vs Ville B' },
+  xAxis: { categories: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven'] },
+  yAxis: { title: { text: '°C' } },
+  series: [
+    { name: 'Ville A', data: [6, 7, 9, 8, 7] },
+    { name: 'Ville B', data: [4, 5, 6, 7, 6] }
+  ]
+});</textarea>
+  <button onclick="runCode('editor22','chart22')">▶️ Exécuter</button>
+  <div id="chart22" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 23 -->
+<div class="card">
+  <h2>Exercice 23 : Secteurs avec légendes détaillées</h2>
+  <div class="hint">
+    Construit un diagramme en secteurs (camembert) :  
+    ajoute 4 à 6 catégories,  
+    donne des pourcentages cohérents,  
+    et personnalise les couleurs si besoin.  
+    Objectif : visualiser une répartition en parts.
+  </div>
+  <textarea id="editor23">Highcharts.chart('chart23', {
+  chart: { type: 'pie' },
+  title: { text: 'Répartition du budget' },
+  series: [{
+    name: 'Part',
+    data: [
+      ['Logement', 35],
+      ['Nourriture', 25],
+      ['Transports', 15],
+      ['Divertissement', 10],
+      ['Autres', 15]
+    ]
+  }]
+});</textarea>
+  <button onclick="runCode('editor23','chart23')">▶️ Exécuter</button>
+  <div id="chart23" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 24 -->
+<div class="card">
+  <h2>Exercice 24 : Scatter avancé</h2>
+  <div class="hint">
+    Crée un nuage de points :  
+    ajoute au moins 8 couples <code>[x, y]</code>,  
+    choisis deux variables mesurables (ex : taille/poids),  
+    et nomme clairement les axes.  
+    Objectif : observer la relation entre deux variables.
+  </div>
+  <textarea id="editor24">Highcharts.chart('chart24', {
+  chart: { type: 'scatter' },
+  title: { text: 'Relation taille / poids' },
+  xAxis: { title: { text: 'Taille (cm)' } },
+  yAxis: { title: { text: 'Poids (kg)' } },
+  series: [{
+    name: 'Individus',
+    data: [
+      [150, 45], [160, 55], [165, 60], [170, 70],
+      [175, 72], [180, 78], [185, 85], [155, 50]
+    ]
+  }]
+});</textarea>
+  <button onclick="runCode('editor24','chart24')">▶️ Exécuter</button>
+  <div id="chart24" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 25 -->
+<div class="card">
+  <h2>Exercice 25 : Barres horizontales personnalisées</h2>
+  <div class="hint">
+    Crée un graphique en barres horizontales :  
+    choisis 5 éléments à classer (ex : produits, équipes),  
+    ordonne-les dans un sens ou dans l’autre,  
+    et ajoute un titre + un nom de série.  
+    Objectif : comprendre le classement visuel en barres.
+  </div>
+  <textarea id="editor25">Highcharts.chart('chart25', {
+  chart: { type: 'bar' },
+  title: { text: 'Classement de 5 élèves' },
+  xAxis: { categories: ['Élève A', 'Élève B', 'Élève C', 'Élève D', 'Élève E'] },
+  series: [{
+    name: 'Score',
+    data: [88, 76, 91, 69, 84]
+  }]
+});</textarea>
+  <button onclick="runCode('editor25','chart25')">▶️ Exécuter</button>
+  <div id="chart25" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 26 -->
+<div class="card">
+  <h2>Exercice 26 : Donut multicolore</h2>
+  <div class="hint">
+    Crée un graphique en donut (anneau) :  
+    ajoute 3 à 6 catégories pour représenter une composition,  
+    règle la taille du trou central (<code>innerSize</code>),  
+    et applique une palette de couleurs cohérente.  
+    Objectif : représenter une répartition circulaire stylisée.
+  </div>
+  <textarea id="editor26">Highcharts.chart('chart26', {
+  chart: { type: 'pie' },
+  title: { text: 'Répartition d’un budget' },
+  plotOptions: {
+    pie: { innerSize: '50%' }
+  },
+  series: [{
+    name: 'Montant',
+    data: [
+      ['Alimentation', 40],
+      ['Logement', 30],
+      ['Loisirs', 15],
+      ['Économie', 15]
+    ]
+  }]
+});</textarea>
+  <button onclick="runCode('editor26','chart26')">▶️ Exécuter</button>
+  <div id="chart26" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 27 -->
+<div class="card">
+  <h2>Exercice 27 : Treemap avancée</h2>
+  <div class="hint">
+    Construis une treemap :  
+    ajoute au moins 6 catégories,  
+    attribue une valeur à chacune,  
+    et indique clairement ce que représente la répartition.  
+    Objectif : visualiser une hiérarchie par tailles relatives.
+  </div>
+  <textarea id="editor27">Highcharts.chart('chart27', {
+  series: [{
+    type: 'treemap',
+    layoutAlgorithm: 'squarified',
+    data: [
+      { name: 'Catégorie A', value: 8 },
+      { name: 'Catégorie B', value: 4 },
+      { name: 'Catégorie C', value: 6 },
+      { name: 'Catégorie D', value: 3 },
+      { name: 'Catégorie E', value: 5 },
+      { name: 'Catégorie F', value: 2 }
+    ]
+  }],
+  title: { text: 'Répartition par catégories' }
+});</textarea>
+  <button onclick="runCode('editor27','chart27')">▶️ Exécuter</button>
+  <div id="chart27" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 28 -->
+<div class="card">
+  <h2>Exercice 28 : Heatmap personnalisée</h2>
+  <div class="hint">
+    Crée une heatmap :  
+    construis une matrice 5×5,  
+    remplis chaque cellule par une valeur numérique,  
+    et précise les axes (ex : jours × heures).  
+    Objectif : manipuler les données matricielles en 2D.
+  </div>
+  <textarea id="editor28">Highcharts.chart('chart28', {
+  chart: { type: 'heatmap' },
+  title: { text: 'Matrice 5×5 d’intensité' },
+  xAxis: { categories: ['A', 'B', 'C', 'D', 'E'] },
+  yAxis: { categories: ['1', '2', '3', '4', '5'], title: null },
+  colorAxis: { min: 0, max: 100 },
+  series: [{
+    data: [
+      [0,0,10],[1,0,30],[2,0,50],[3,0,70],[4,0,90],
+      [0,1,20],[1,1,40],[2,1,60],[3,1,80],[4,1,100],
+      [0,2,15],[1,2,35],[2,2,55],[3,2,75],[4,2,95],
+      [0,3,5], [1,3,25],[2,3,45],[3,3,65],[4,3,85],
+      [0,4,12],[1,4,32],[2,4,52],[3,4,72],[4,4,92]
+    ]
+  }]
+});</textarea>
+  <button onclick="runCode('editor28','chart28')">▶️ Exécuter</button>
+  <div id="chart28" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 29 -->
+<div class="card">
+  <h2>Exercice 29 : Série temporelle complète</h2>
+  <div class="hint">
+    Crée une série temporelle :  
+    génère 7 dates consécutives avec <code>Date.UTC()</code>,  
+    ajoute une valeur pour chaque date,  
+    et utilise un axe temporel (<code>datetime</code>).  
+    Objectif : afficher l’évolution d’une variable dans le temps.
+  </div>
+  <textarea id="editor29">Highcharts.chart('chart29', {
+  chart: { type: 'line' },
+  title: { text: 'Évolution sur 7 jours' },
+  xAxis: { type: 'datetime' },
+  series: [{
+    name: 'Valeur',
+    data: [
+      [Date.UTC(2025,0,1), 10],
+      [Date.UTC(2025,0,2), 12],
+      [Date.UTC(2025,0,3), 15],
+      [Date.UTC(2025,0,4), 13],
+      [Date.UTC(2025,0,5), 18],
+      [Date.UTC(2025,0,6), 17],
+      [Date.UTC(2025,0,7), 20]
+    ]
+  }]
+});<textarea>
+  <button onclick="runCode('editor29','chart29')">▶️ Exécuter</button>
+  <div id="chart29" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 30 -->
+<div class="card">
+  <h2>Exercice 30 : Funnel</h2>
+  <div class="hint">
+    Crée un graphique en entonnoir :  
+    définis les étapes successives d’un processus (ex : visites → achat),  
+    décrois les valeurs à chaque étape,  
+    et ajoute un titre explicite.  
+    Objectif : comprendre la visualisation d’un tunnel de conversion.
+  </div>
+  <textarea id="editor30">Highcharts.chart('chart30', {
+  chart: { type: 'funnel' },
+  title: { text: 'Processus d’achat' },
+  series: [{
+    name: 'Utilisateurs',
+    data: [
+      ['Visites', 5000],
+      ['Ajout au panier', 1500],
+      ['Commandes', 900],
+      ['Achats', 600]
+    ]
+  }]
+});</textarea>
+  <button onclick="runCode('editor30','chart30')">▶️ Exécuter</button>
+  <div id="chart30" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 31 -->
+<div class="card">
+  <h2>Exercice 31 : Carte des continents</h2>
+  <div class="hint">
+    Crée une carte du monde où chaque continent reçoit une couleur différente.  
+    Utilise la carte <code>custom/world-continents</code>,  
+    attribue une valeur différente à chaque continent,  
+    et active les étiquettes pour afficher leurs noms.  
+    Objectif : comprendre comment manipuler une carte simple avec Highmaps.
+  </div>
+    <textarea id="editor31">Highcharts.mapChart('chart31', {
+  chart: { map: 'custom/world-continents' },
+  title: { text: 'Carte des continents' },
+  colorAxis: { min: 1, max: 6 },
+  series: [{
+    name: 'Continents',
+    data: [
+      ['africa', 1], ['asia', 2], ['europe', 3],
+      ['north-america', 4], ['south-america', 5], ['oceania', 6]
+    ],
+    dataLabels: { enabled: true, format: '{point.name}' }
+  }]
+});</textarea><textarea id="editor31"></textarea>
+  <button onclick="runCode('editor31','chart31')">▶️ Exécuter</button>
+  <div id="chart31" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 32 -->
+<div class="card">
+  <h2>Exercice 32 : Carte mondiale (projection Robinson)</h2>
+  <div class="hint">
+	Affiche la carte du monde en projection Robinson.  
+	Associe une valeur numérique à chaque pays (ex : un score fictif).  
+	Utilise <code>iso-a3</code> pour relier les données à la carte.  
+	Objectif : apprendre à remplir automatiquement une carte mondiale.
+  </div>
+    <textarea id="editor32">Highcharts.mapChart('chart32', {
+  chart: { map: 'custom/world-robinson' },
+  title: { text: 'Monde – Projection Robinson' },
+  colorAxis: { min: 0, max: 10 },
+  series: [{
+    name: 'Score aléatoire',
+    data: Highcharts.geojson(Highcharts.maps['custom/world-robinson'])
+      .map((p,i)=>({ key: p.properties['iso-a3'], value: i % 10 })),
+    joinBy: ['iso-a3','key']
+  }]
+});</textarea>
+  <button onclick="runCode('editor32','chart32')">▶️ Exécuter</button>
+  <div id="chart32" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 33 -->
+<div class="card">
+  <h2>Exercice 33 : Graphique financier simple (Highstock)</h2>
+  <div class="hint">
+    Crée un graphique financier avec Highstock.  
+    Ajoute 4 à 6 points datés (format <code>Date.UTC()</code>)  
+    représentant l’évolution d’un cours fictif.  
+    Objectif : comprendre la structure d’un graphique temporel boursier.
+  </div>
+
+    <textarea id="editor33">Highcharts.stockChart('chart33', {
+  title: { text: 'Cours fictif' },
+  series: [{
+    name: 'Valeur',
+    data: [
+      [Date.UTC(2025,0,1),120],
+      [Date.UTC(2025,0,2),130],
+      [Date.UTC(2025,0,3),125],
+      [Date.UTC(2025,0,4),140]
+    ]
+  }]
+});</textarea>
+  <button onclick="runCode('editor33','chart33')">▶️ Exécuter</button>
+  <div id="chart33" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 34 -->
+<div class="card">
+  <h2>Exercice 34 : Bougies (OHLC)</h2>
+  <div class="hint">
+    Construit un graphique de type bougies (OHLC).  
+    Chaque point doit contenir : <code>[date, open, high, low, close]</code>.  
+    Utilise 4 à 6 bougies pour simuler une variation de prix.  
+    Objectif : découvrir les graphiques financiers avancés.
+  </div>
+    <textarea id="editor34">Highcharts.stockChart('chart34', {
+  title: { text: 'Bougies japonaises (OHLC)' },
+  series: [{
+    type: 'candlestick',
+    data: [
+      [Date.UTC(2025,0,1),120,135,118,130],
+      [Date.UTC(2025,0,2),130,138,125,132],
+      [Date.UTC(2025,0,3),132,140,130,138],
+      [Date.UTC(2025,0,4),138,150,135,145],
+      [Date.UTC(2025,0,5),145,155,142,150]
+    ]
+  }]
+});</textarea>
+  <button onclick="runCode('editor34','chart34')">▶️ Exécuter</button>
+  <div id="chart34" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 35 -->
+<div class="card">
+  <h2>Exercice 35 : Prix + Volume (2 séries)</h2>
+  <div class="hint">
+    Combine deux séries sur le même graphique :  
+    1) une série de prix (ligne),  
+    2) une série de volumes (colonnes).  
+    Ajoute 5 valeurs pour chaque série.  
+    Objectif : visualiser simultanément évolution et intensité du marché.
+  </div>
+    <textarea id="editor35">Highcharts.stockChart('chart35', {
+  title: { text: 'Prix & Volume' },
+  series: [
+    { name:'Prix', data:[120,130,125,140,150] },
+    { type:'column', name:'Volume', data:[200,300,250,400,500] }
+  ]
+});</textarea>
+  <button onclick="runCode('editor35','chart35')">▶️ Exécuter</button>
+  <div id="chart35" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 36 -->
+<div class="card">
+  <h2>Exercice 36 : Carte mondiale – Niveaux d’activité</h2>
+  <div class="hint">
+    Associe à chaque pays un niveau : faible, moyen ou élevé.  
+    Utilise <code>dataClasses</code> pour définir les 3 catégories de couleur.  
+    Génère des niveaux aléatoires pour chaque pays de la carte.  
+    Objectif : apprendre à créer une carte catégorielle.
+  </div>
+    <textarea id="editor36">Highcharts.mapChart('chart36', {
+  chart: { map: 'custom/world-robinson' },
+  title: { text: 'Niveau d’activité par pays (fictif)' },
+  subtitle: { text: 'Trois niveaux : faible, moyen, élevé' },
+  colorAxis: {
+    dataClasses: [
+      { from: 0, to: 0, color: '#d0e1f9', name: 'Faible' },
+      { from: 1, to: 1, color: '#73a3d3', name: 'Moyen' },
+      { from: 2, to: 2, color: '#0b3c6a', name: 'Élevé' }
+    ]
+  },
+  tooltip: { pointFormat: '{point.name}<br>Niveau : <b>{point.levelName}</b>' },
+  series: [{
+    data: (function () {
+      const features = Highcharts.geojson(Highcharts.maps['custom/world-robinson']);
+      return features.map(f => {
+        const level = Math.floor(Math.random() * 3);
+        const names = ['Faible', 'Moyen', 'Élevé'];
+        return { 'hc-key': f.properties['hc-key'], value: level, levelName: names[level] };
+      });
+    }()),
+    joinBy: 'hc-key'
+  }]
+});</textarea>
+  <button onclick="runCode('editor36','chart36')">▶️ Exécuter</button>
+  <div id="chart36" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 37 -->
+<div class="card">
+  <h2>Exercice 37 : Spline + zone (Highstock)</h2>
+  <div class="hint">
+    Trace une courbe (<code>areaspline</code>) montrant une valeur évolutive.  
+    Ajoute entre 5 et 8 points numériques.  
+    Objectif : afficher une série temporelle simple avec une zone ombrée.
+  </div>
+    <textarea id="editor37">Highcharts.stockChart('chart37', {
+  title:{ text:'Courbe + Zone' },
+  series:[{
+    type:'areaspline',
+    data:[110,115,120,118,130,128]
+  }]
+});</textarea>
+  <button onclick="runCode('editor37','chart37')">▶️ Exécuter</button>
+  <div id="chart37" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 38 -->
+<div class="card">
+  <h2>Exercice 38 : Comparaison de deux actions</h2>
+  <div class="hint">
+    Compare deux actions financières.  
+    Crée deux séries de données ayant chacune environ 5 valeurs.  
+    Objectif : visualiser deux évolutions boursières sur la même échelle.
+  </div>
+  <textarea id="editor38">Highcharts.stockChart('chart38', {
+  title:{ text:'Comparaison de 2 actions' },
+  series:[
+    { name:'Action A', data:[100,105,102,110,108] },
+    { name:'Action B', data:[90,88,95,100,105] }
+  ]
+});</textarea>
+  <button onclick="runCode('editor38','chart38')">▶️ Exécuter</button>
+  <div id="chart38" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 39 -->
+<div class="card">
+  <h2>Exercice 39 : Carte interactive (zoom + tooltip)</h2>
+  <div class="hint">
+	Affiche une carte interactive avec zoom.  
+	Ajoute un tooltip simple affichant le nom du pays.  
+	Remplis chaque pays avec une valeur numérique.  
+	Objectif : explorer l’interactivité de Highmaps.
+  </div>
+    <textarea id="editor39">Highcharts.mapChart('chart39', {
+  chart:{ map:'custom/world-robinson' },
+  title:{ text:'Carte interactive' },
+  tooltip:{ pointFormat:'<b>{point.name}</b>' },
+  series:[{
+    data: Highcharts.geojson(Highcharts.maps['custom/world-robinson'])
+      .map((p,i)=>({key:p.properties['iso-a3'],value:i})),
+    joinBy:['iso-a3','key']
+  }]
+});</textarea>
+  <button onclick="runCode('editor39','chart39')">▶️ Exécuter</button>
+  <div id="chart39" style="height:400px;"></div>
+</div>
+
+<!-- EXERCICE 40 -->
+<div class="card">
+  <h2>Exercice 40 : Indicateur financier (RSI simplifié)</h2>
+  <div class="hint">
+    Crée un indicateur financier entre 0 et 100 (type RSI).  
+    Ajoute une dizaine de valeurs dans cet intervalle.  
+    Objectif : comprendre l’affichage d'un oscillateur financier.
+  </div>
+    <textarea id="editor40">Highcharts.stockChart('chart40', {
+  title:{ text:'RSI (simplifié)' },
+  yAxis:{ min:0, max:100 },
+  series:[{
+    name:'RSI',
+    data:[30,45,55,60,40,50,70,65]
+  }]
+});
+</textarea>
+  <button onclick="runCode('editor40','chart40')">▶️ Exécuter</button>
+  <div id="chart40" style="height:400px;"></div>
+</div>
+
+  </main>
+
+  <footer>
+    &copy; 2025 TP Interactif – Highcharts | ARBAUT Jean-Baptiste - TROPEL Célia
+  </footer>
+  
+  <!-- Fichier JS externe -->
+  <script src="script.js"></script>
+
+  </script>
+</body>
+</html>
