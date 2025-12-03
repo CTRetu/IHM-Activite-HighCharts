@@ -862,42 +862,35 @@
 
 <!-- EXERCICE 39 -->
 <div class="card">
-  <h2>Exercice 39 : Diagramme de Gantt</h2>
+  <h2>Exercice 39 : Mise en évidence des niveaux (Highstock)</h2>
   <div class="hint">
-	Crée un diagramme de Gantt avec trois tâches (Analyse, Développement, Tests).
-	Donne une date de début et de fin à chaque étape, puis modifie une durée.
-	Objectif : comprendre la structure d’un planning en Gantt.
+  Crée un graphique Highstock montrant l’évolution d’un prix sur plusieurs jours.
+Ajoute 6 dates consécutives (avec Date.UTC()), puis fais changer la couleur de la courbe selon la valeur du prix : vert sous un certain seuil, orange dans une zone intermédiaire et rouge au-dessus d’un seuil élevé.
+Objectif : apprendre à utiliser les zones de couleur pour mettre en évidence différents niveaux.
   </div>
-    <textarea id="editor39">Highcharts.ganttChart('chart39', {
-  title: { text: 'Planning du projet (Gantt simple)' },
+    <textarea id="editor39">Highcharts.stockChart('chart39', {
+  title: { text: "Prix avec zones colorées" },
+
   series: [{
-    name: 'Tâches',
+    name: "Prix",
     data: [
-      {
-        name: 'Analyse',
-        start: Date.UTC(2025, 0, 1),
-        end: Date.UTC(2025, 0, 4)
-      },
-      {
-        name: 'Développement',
-        start: Date.UTC(2025, 0, 4),
-        end: Date.UTC(2025, 0, 10)
-      },
-      {
-        name: 'Tests',
-        start: Date.UTC(2025, 0, 10),
-        end: Date.UTC(2025, 0, 13)
-      }
-    ]
-  }],
-  tooltip: {
-    pointFormat:
-      '<b>{point.name}</b><br>' +
-      'Début : {point.start:%e %b %Y}<br>' +
-      'Fin : {point.end:%e %b %Y}'
-  }
-});
-</textarea>
+      [Date.UTC(2025,0,1), 118],
+      [Date.UTC(2025,0,2), 123],
+      [Date.UTC(2025,0,3), 127],
+      [Date.UTC(2025,0,4), 129],
+      [Date.UTC(2025,0,5), 131],
+      [Date.UTC(2025,0,6), 136]
+    ],
+
+    zones: [
+      { value: 125, color: "#4caf50" },
+      { value: 130, color: "#ff9800" },  
+      { color: "#f44336" }              
+    ],
+
+    tooltip: { valueSuffix: " €" }
+  }]
+});</textarea>
   <button onclick="runCode('editor39','chart39')">▶️ Exécuter</button>
   <div id="chart39" style="height:400px;"></div>
 </div>
@@ -935,6 +928,7 @@
   </script>
 </body>
 </html>
+
 
 
 
