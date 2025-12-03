@@ -697,13 +697,13 @@
 
 <!-- EXERCICE 39 -->
 <div class="card">
-  <h2>Exercice 39 : Diagramme de Gantt</h2>
+  <h2>Exercice 39 : Mise en évidence des niveaux (Highstock)</h2>
   <div class="hint">
-	Crée un diagramme de Gantt avec trois tâches (Analyse, Développement, Tests).
-	Donne une date de début et de fin à chaque étape, puis modifie une durée.
-	Objectif : comprendre la structure d’un planning en Gantt.
+  Crée un graphique Highstock montrant l’évolution d’un prix sur plusieurs jours.
+Ajoute 6 dates consécutives (avec Date.UTC()), puis fais changer la couleur de la courbe selon la valeur du prix : vert sous un certain seuil, orange dans une zone intermédiaire et rouge au-dessus d’un seuil élevé.
+Objectif : apprendre à utiliser les zones de couleur pour mettre en évidence différents niveaux.
   </div>
-    <textarea id="editor39">Highcharts.ganttChart('chart39', {
+    <textarea id="editor39">Highcharts.Chart('chart39', {
   title: { text: 'Graphique 39' }
 });</textarea>
   <button onclick="runCode('editor39','chart39')">▶️ Exécuter</button>
@@ -737,5 +737,6 @@
   </script>
 </body>
 </html>
+
 
 
