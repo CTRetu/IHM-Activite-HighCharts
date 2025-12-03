@@ -1,8 +1,8 @@
 # TP Highcharts Interactif
 
-## Description du projet
+## Description du TP
 
-Ce projet propose une **page HTML interactive** permettant d’apprendre Highcharts, Highstock et Highmaps à travers **40 exercices progressifs**.
+Ce TP propose une **page HTML interactive** (reproduisant l'architecture d'un notebook), permettant d’apprendre Highcharts (Higthcharts Core / More, Highstock, Highmaps et Highcharts Gantt) à travers **40 exercices progressifs**.
 
 Il permet de :
 
@@ -11,17 +11,18 @@ Il permet de :
 - S’initier à la visualisation de données  
 - Comprendre les modules spécifiques de Highcharts (heatmap, treemap, funnel, stock, maps, …)
 
-## Contenu du projet
+## Contenu du TP
 
-Le projet se compose des fichiers suivants :
+Le TP se compose des fichiers suivants :
 
 | Fichier | Rôle |
 |--------|------|
 | **index.html** | Structure du TP et des 40 exercices |
 | **style.css** | Styles et mise en forme du TP |
 | **script.js** | Script exécutant le code des exercices |
+| **correction.html**| Correction des exercices 21 à 40 |
 
-## Lancer le projet en local
+## Lancer le TP en local
 
 Aucune installation supplémentaire n’est nécessaire.  
 Vous devez simplement disposer de **Python 3**.
@@ -40,7 +41,12 @@ Vous devez simplement disposer de **Python 3**.
    ```
    http://localhost:8000
    ```
-
+   *Par défaut, ce sera la page index.html contenant les exercices.*
+4. Si besoin : ouvrir la page de correction :
+   ```
+   http://localhost:8000/correction.html
+   ```
+   
 ## Documentation Highcharts utile pour les exercices
 
 ### Highcharts – Documentation générale
@@ -55,6 +61,10 @@ Vous devez simplement disposer de **Python 3**.
 ### Highstock
 - Documentation : https://api.highcharts.com/highstock/
 - Exemples : https://www.highcharts.com/demo/stock
+
+### Highcharts Gantt
+- Documentation : https://api.highcharts.com/gantt/
+- Exemples : https://www.highcharts.com/demo#highcharts-gantt-demo-highcharts-gantt
 
 ### Modules avancés
 | Module | Lien |
