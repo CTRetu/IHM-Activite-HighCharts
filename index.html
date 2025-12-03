@@ -694,14 +694,13 @@
 
 <!-- EXERCICE 39 -->
 <div class="card">
-  <h2>Exercice 39 : Carte interactive (zoom + tooltip)</h2>
+  <h2>Exercice 39 : Diagramme de Gantt</h2>
   <div class="hint">
-	Affiche une carte interactive avec zoom.  
-	Ajoute un tooltip simple affichant le nom du pays.  
-	Remplis chaque pays avec une valeur numérique.  
-	Objectif : explorer l’interactivité de Highmaps.
+	Crée un diagramme de Gantt avec trois tâches (Analyse, Développement, Tests).
+	Donne une date de début et de fin à chaque étape, puis modifie une durée.
+	Objectif : comprendre la structure d’un planning en Gantt.
   </div>
-    <textarea id="editor39">Highcharts.chart('chart39', {
+    <textarea id="editor39">Highcharts.ganttChart('chart39', {
   title: { text: 'Graphique 39' }
 });</textarea>
   <button onclick="runCode('editor39','chart39')">▶️ Exécuter</button>
