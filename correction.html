@@ -36,7 +36,7 @@
 
 <body>
   <header>
-    <h1>IHM : TP HightCharts - Correction</h1>
+    <h1>IHM : TP HighCharts - Correction</h1>
   </header>
 
   <main>
@@ -422,7 +422,7 @@
     et affiche une légende lisible.  
     Objectif : représenter une comparaison temporelle simple.
   </div>
-  <textarea id="editor22">HHighcharts.chart('chart22', {
+  <textarea id="editor22">Highcharts.chart('chart22', {
   chart: { type: 'line' },
   title: { text: 'Température : Ville A vs Ville B' },
   xAxis: { categories: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven'] },
@@ -629,7 +629,7 @@
       [Date.UTC(2025,0,7), 20]
     ]
   }]
-});<textarea>
+});</textarea>
   <button onclick="runCode('editor29','chart29')">▶️ Exécuter</button>
   <div id="chart29" style="height:400px;"></div>
 </div>
@@ -690,7 +690,7 @@
 
 <!-- EXERCICE 32 -->
 <div class="card">
-  <h2>Exercice 32 : Carte mondiale (projection Robinson)</h2>
+  <h2>Exercice 32 : Carte mondiale</h2>
   <div class="hint">
 	Affiche la carte du monde en projection Robinson.  
 	Associe une valeur numérique à chaque pays (ex : un score fictif).  
@@ -862,23 +862,42 @@
 
 <!-- EXERCICE 39 -->
 <div class="card">
-  <h2>Exercice 39 : Carte interactive (zoom + tooltip)</h2>
+  <h2>Exercice 39 : Diagramme de Gantt</h2>
   <div class="hint">
-	Affiche une carte interactive avec zoom.  
-	Ajoute un tooltip simple affichant le nom du pays.  
-	Remplis chaque pays avec une valeur numérique.  
-	Objectif : explorer l’interactivité de Highmaps.
+	Crée un diagramme de Gantt avec trois tâches (Analyse, Développement, Tests).
+	Donne une date de début et de fin à chaque étape, puis modifie une durée.
+	Objectif : comprendre la structure d’un planning en Gantt.
   </div>
-    <textarea id="editor39">Highcharts.mapChart('chart39', {
-  chart:{ map:'custom/world-robinson' },
-  title:{ text:'Carte interactive' },
-  tooltip:{ pointFormat:'<b>{point.name}</b>' },
-  series:[{
-    data: Highcharts.geojson(Highcharts.maps['custom/world-robinson'])
-      .map((p,i)=>({key:p.properties['iso-a3'],value:i})),
-    joinBy:['iso-a3','key']
-  }]
-});</textarea>
+    <textarea id="editor39">Highcharts.ganttChart('chart39', {
+  title: { text: 'Planning du projet (Gantt simple)' },
+  series: [{
+    name: 'Tâches',
+    data: [
+      {
+        name: 'Analyse',
+        start: Date.UTC(2025, 0, 1),
+        end: Date.UTC(2025, 0, 4)
+      },
+      {
+        name: 'Développement',
+        start: Date.UTC(2025, 0, 4),
+        end: Date.UTC(2025, 0, 10)
+      },
+      {
+        name: 'Tests',
+        start: Date.UTC(2025, 0, 10),
+        end: Date.UTC(2025, 0, 13)
+      }
+    ]
+  }],
+  tooltip: {
+    pointFormat:
+      '<b>{point.name}</b><br>' +
+      'Début : {point.start:%e %b %Y}<br>' +
+      'Fin : {point.end:%e %b %Y}'
+  }
+});
+</textarea>
   <button onclick="runCode('editor39','chart39')">▶️ Exécuter</button>
   <div id="chart39" style="height:400px;"></div>
 </div>
@@ -916,5 +935,6 @@
   </script>
 </body>
 </html>
+
 
 
